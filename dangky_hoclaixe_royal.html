@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=375, initial-scale=1.0">
+<title>Đăng ký học lái xe</title>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --indigo:    #4338ca;
+    --indigo-dk: #3730a3;
+    --violet:    #7c3aed;
+    --rose:      #e11d48;
+    --rose-lt:   #fff1f2;
+    --sky:       #0ea5e9;
+    --white:     #ffffff;
+    --card-bg:   #fafaff;
+    --text:      #1e1b4b;
+    --muted:     #6366a0;
+    --border:    #d8d6f0;
+    --soft-line: #eeedf8;
+    --gold:      #facc15;
+
+    --section-px: 14px;
+    --section-gap: 8px;
+  }
+
+  body {
+    font-family: 'Be Vietnam Pro', sans-serif;
+    background: #e0dff0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 16px 0;
+  }
+
+  .card {
+    width: 375px;
+    background: var(--card-bg);
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(67,56,202,0.14);
+  }
+
+  /* ── HEADER ── */
+  .header {
+    background: linear-gradient(135deg, #1e1b4b 0%, var(--indigo) 60%, var(--violet) 100%);
+    padding: 16px 18px;
+    text-align: center;
+    position: relative;
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--sky), var(--violet), var(--rose));
+  }
+  .header-text .name {
+    font-size: 17px; font-weight: 800;
+    color: var(--white);
+    letter-spacing: 0.3px;
+    line-height: 1.3;
+  }
+  .header-text .subtitle {
+    font-size: 11px; font-weight: 500;
+    color: rgba(255,255,255,0.62);
+    margin-top: 2px;
+    letter-spacing: 0.3px;
+  }
+  .header-text .phone {
+    font-size: 21px; font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 1.5px;
+    margin-top: 6px;
+  }
+  .header-text .contact-note {
+    font-size: 10px; font-weight: 500;
+    color: rgba(255,255,255,0.48);
+    margin-top: 2px;
+  }
+
+  /* ── SECTION TITLE ── */
+  .section-title {
+    font-size: 11px; font-weight: 700;
+    color: var(--indigo);
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    padding: 14px var(--section-px) var(--section-gap);
+    display: flex; align-items: center; gap: 6px;
+  }
+  .section-title::before {
+    content: '';
+    display: inline-block;
+    width: 3px; height: 13px;
+    background: linear-gradient(180deg, var(--indigo), var(--violet));
+    border-radius: 2px;
+  }
+
+  /* ── HẠNG ĐÀO TẠO ── */
+  .hangs-row {
+    display: flex;
+    gap: 6px;
+    padding: 0 var(--section-px);
+  }
+  .hang-box {
+    flex: 1;
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    text-align: center;
+    padding: 8px 4px 7px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+  .hang-icon {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+  }
+  .hang-letter {
+    font-size: 15px; font-weight: 800;
+    color: var(--indigo);
+    line-height: 1;
+  }
+  .hang-desc {
+    font-size: 9px; font-weight: 500;
+    color: var(--muted);
+    line-height: 1.3;
+  }
+
+  /* ── HỒ SƠ ── */
+  .docs-block {
+    margin: 0 var(--section-px);
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    overflow: hidden;
+  }
+  .doc-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 11px 12px;
+    border-bottom: 1px solid var(--soft-line);
+  }
+  .doc-item:last-child { border-bottom: none; }
+  .doc-num {
+    width: 22px; height: 22px;
+    background: linear-gradient(135deg, var(--indigo), var(--violet));
+    color: var(--white);
+    font-size: 11px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .doc-text {
+    font-size: 12.5px;
+    color: var(--text);
+    line-height: 1.45;
+    font-weight: 500;
+  }
+
+  /* ── ẢNH MẪU ── */
+  .photos-row {
+    display: flex;
+    gap: 10px;
+    padding: 0 var(--section-px);
+  }
+  .photo-box {
+    flex: 1;
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    overflow: hidden;
+  }
+  .photo-thumb {
+    width: 100%; height: 52px;
+    background: linear-gradient(135deg, var(--indigo-dk), var(--violet));
+    display: flex; align-items: center; justify-content: center;
+    border-bottom: 1.5px solid var(--border);
+  }
+  .photo-thumb-label {
+    font-size: 11px; font-weight: 700;
+    color: var(--white);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+  }
+  .photo-notes {
+    padding: 6px 8px 8px;
+    list-style: none;
+  }
+  .photo-notes li {
+    font-size: 10.5px;
+    color: var(--muted);
+    line-height: 1.55;
+    padding-left: 10px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    position: relative;
+  }
+  .photo-notes li::before {
+    content: '\2022';
+    position: absolute; left: 0;
+    color: var(--violet);
+    font-weight: 700;
+  }
+
+  /* ── ĐỊA CHỈ ── */
+  .address-block {
+    margin: 14px var(--section-px);
+    background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+    padding: 10px 13px;
+    border: 1.5px solid #c4b5fd;
+    text-align: center;
+  }
+  .address-label {
+    font-size: 10px; font-weight: 700;
+    color: var(--indigo-dk);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+  }
+  .address-text {
+    font-size: 12px; font-weight: 600;
+    color: var(--text);
+    line-height: 1.4;
+    margin-top: 2px;
+  }
+  .address-school {
+    font-size: 11px;
+    color: var(--muted);
+    font-weight: 500;
+    margin-top: 2px;
+  }
+</style>
+</head>
+<body>
+<div class="card">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-text">
+      <div class="name">Thầy Hải — Dạy Lái Xe</div>
+      <div class="subtitle">Tư vấn & hướng dẫn đăng ký học lái xe các hạng</div>
+      <div class="phone">0903 785 483</div>
+      <div class="contact-note">Liên hệ Zalo hoặc gọi trực tiếp</div>
+    </div>
+  </div>
+
+  <!-- HẠNG ĐÀO TẠO -->
+  <div class="section-title">Các hạng đào tạo</div>
+  <div class="hangs-row">
+    <div class="hang-box">
+      <img src="image/A.png" alt="Hạng A" class="hang-icon">
+      <div class="hang-letter">A</div>
+      <div class="hang-desc">Xe máy</div>
+    </div>
+    <div class="hang-box">
+      <img src="image/B.png" alt="Hạng B" class="hang-icon">
+      <div class="hang-letter">B</div>
+      <div class="hang-desc">Ô tô con</div>
+    </div>
+    <div class="hang-box">
+      <img src="image/C.png" alt="Hạng C" class="hang-icon">
+      <div class="hang-letter">C</div>
+      <div class="hang-desc">Xe tải</div>
+    </div>
+    <div class="hang-box">
+      <img src="image/D.png" alt="Hạng D" class="hang-icon">
+      <div class="hang-letter">D</div>
+      <div class="hang-desc">Xe khách ≤30 chỗ</div>
+    </div>
+    <div class="hang-box">
+      <img src="image/E.png" alt="Hạng E" class="hang-icon">
+      <div class="hang-letter">E</div>
+      <div class="hang-desc">Xe khách >30 chỗ</div>
+    </div>
+  </div>
+
+  <!-- HỒ SƠ -->
+  <div class="section-title">Hồ sơ học lái xe</div>
+  <div class="docs-block">
+    <div class="doc-item">
+      <div class="doc-num">1</div>
+      <div class="doc-text">Phiếu khám sức khỏe học lái xe</div>
+    </div>
+    <div class="doc-item">
+      <div class="doc-num">2</div>
+      <div class="doc-text">10 tấm hình 3×4 — nền màu <strong>xanh</strong></div>
+    </div>
+    <div class="doc-item">
+      <div class="doc-num">3</div>
+      <div class="doc-text">Photo căn cước + GPLX hạng A <em>(nếu có)</em></div>
+    </div>
+    <div class="doc-item">
+      <div class="doc-num">4</div>
+      <div class="doc-text">Photo căn cước VNeID (chụp màn hình app)</div>
+    </div>
+  </div>
+
+  <!-- ẢNH MẪU -->
+  <div class="section-title">Ảnh học viên cần gửi</div>
+  <div class="photos-row">
+
+    <div class="photo-box">
+      <div class="photo-thumb"><span class="photo-thumb-label">Ảnh chân dung</span></div>
+      <ul class="photo-notes">
+        <li>Rõ mặt, nhìn thẳng</li>
+        <li>Nghiêm trang, lịch sự</li>
+        <li>Không đeo kính</li>
+        <li>Áo cổ gọn gàng</li>
+      </ul>
+    </div>
+
+    <div class="photo-box">
+      <div class="photo-thumb"><span class="photo-thumb-label">Căn cước VNeID</span></div>
+      <ul class="photo-notes">
+        <li>Chụp màn hình app VNeID</li>
+        <li>Rõ tên, ngày sinh, số CCCD</li>
+        <li>Có số điện thoại định danh (kéo xuống hết trang để hiện đầy đủ)</li>
+        <li>Ảnh rõ nét, không che mờ</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- ĐỊA CHỈ -->
+  <div class="address-block">
+    <div class="address-content">
+      <div class="address-label">Địa chỉ trường</div>
+      <div class="address-text">46 Hoa Mai, Phường 2, Quận Phú Nhuận</div>
+      <div class="address-school">Trường dạy lái xe Quý Đức</div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
